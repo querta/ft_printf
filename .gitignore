@@ -1,0 +1,8 @@
+.Ds_Store
+*.swp
+.git
+.vscode
+a.out
+test.c
+*.o
+*.a
