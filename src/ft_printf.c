@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:03:41 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/07 21:13:25 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/08 17:40:48 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,21 @@ char	*parseformat(char *a, t_struct *format, va_list var)
 		if (*s == '-' || *s == '0')
 			format->flag = *s++;
 		printf("\nwidth s=%c\n", *s);
-		if (ft_isdigit((int)*s) || *s == '*')
+		if (ft_isdigit((int)*s) || *s == '*' || *s == '-')
 		{
+			if (*s == '-')
+				format->flag = *s++;
 			while (ft_isdigit((int)*s))
 				format->width = (int)(format->width * 10 + *s++ - '0');
 			printf("\n after while width s=%c\n", *s);
-			if (*s == '*'){
+			if (*s == '*')
+			{
 				format->width = va_arg(var, int);
+				if (format->width < 0)
+				{
+					format->flag = '-';
+					format->width *= -1;
+				}
 				s++;
 			}
 		}
@@ -106,7 +114,8 @@ char	*parseformat(char *a, t_struct *format, va_list var)
 		{
 			while (ft_isdigit((int)*s))
 				format->precision = (int)(format->precision * 10 + *s++ - '0');
-			if (*s == '*'){
+			if (*s == '*')
+			{
 				format->precision = va_arg(var, int);
 				s++;
 			}

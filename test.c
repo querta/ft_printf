@@ -9,11 +9,13 @@ int main ()
 	/* 
 	$ если есть перенос
 	% если переноса нет
+	
+	Флаги, Ширина, .Точность, Тип
 	*/
 	printf ("\n===== 1 =====\n");
 	ft_printf("first line\nsecond%-333.12d\nthird", 123456);
 	printf ("\n===== 2 =====\n");
-	ft_printf("flag=0 width =333, precision = 12 %0*.*d\n", 333, 12);
+	ft_printf("flag=0 width =333, precision = 12 %0*.*d\n", -333, 12);
 	// printf("\n");
 	// printf("aaa%-a");
 	// ft_printf("aaaaaaaaaaa");
