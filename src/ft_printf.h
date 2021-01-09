@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:06:49 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/07 20:34:21 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/09 19:07:49 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct		s_pftlist
 	// int		size;
 	char	type;
 	int		length;
+	char	*str;
+	char	*a;
 }					t_struct;
 
 int		ft_printf(const char *str, ...);

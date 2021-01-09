@@ -12,10 +12,16 @@ int main ()
 	
 	Флаги, Ширина, .Точность, Тип
 	*/
-	printf ("\n===== 1 =====\n");
-	ft_printf("first line\nsecond%-333.12d\nthird", 123456);
-	printf ("\n===== 2 =====\n");
-	ft_printf("flag=0 width =333, precision = 12 %0*.*d\n", -333, 12);
+	printf("\n===== 1 =====\n");
+	// printf ("\n ===== length:%d\n", 	printf("first line\nsecond%-----13.12d\nthird", 123456));
+	ft_printf("first line\nsecond%-----13.12d\nthird", 123456);
+	printf("\n===== 2 =====\n");
+	// printf ("\n ===== length:%d\n", 	printf("flag=0 width =13, precision = 12 %000000*.*d\n", -13, 12, 12));
+	ft_printf("flag=0 width =13, precision = 12 %000000*.*d\n", -13, 12, 12);
+	printf ("\n===== 3 =====\n");
+	// ft_printf("%00000*.-5d$\n", -12, 1);
+	ft_printf("%10.20.30.40d");
+	// printf("%00000*.-5d$\n", -12, 1);
 	// printf("\n");
 	// printf("aaa%-a");
 	// ft_printf("aaaaaaaaaaa");
