@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:03:41 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/09 20:04:49 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/12 20:43:38 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,111 +15,7 @@
 
 #include <string.h>
 
-
-// int		ft_printf(char *apFormat, ...)
-// {
-// 	va_list ap;             /* point on next unnamed argument */
-
-// 	va_start(ap, apFormat); /* set 'ap' on 1-st unnamed argument */
-// 	for (char *p = apFormat; *p; p++)
-// 	{
-// 	if (*p !='%')
-// 	{
-// 		putchar(*p);
-// 		continue;
-// 	}
-// 	switch(* (++p))
-// 	{
-//       case 'd':
-//       {
-//         int ival = 0;
-//         ival = va_arg(ap, int);
-//         printf ("%d", ival);
-//         break;
-//       }
-//       case 'f':
-//       {
-//         double  dval = 0.;
-//         dval = va_arg(ap, double);
-//         printf("%f", dval);
-//         break;
-//       }
-//       case 's':
-//       {
-//         for(char *sval = va_arg(ap, char *); *sval; sval++)
-//           putchar(*sval);
-//         break;
-//       }
-//       default:
-//       {
-//         putchar(*p);
-//         break;
-//       }
-//     }
-//   }
-//   va_end(ap); /* clean all */
-//   return (0);
-// }
-
-int	ft_istype(char c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	else
-		return (0);
-}
-
-void parceprecision()
-{
-	
-}
-
-char	*parseformat(char *a, t_struct *format, va_list var)
-{
-	char *s;
-	int i;
-
-	i = 0;
-	s = ++a;
-	while (1)
-	{
-		while (*s == '-' || *s == '0')
-			format->flag = *s++;
-		if (ft_isdigit((int)*s) || *s == '*')
-		{
-			while (ft_isdigit((int)*s))
-				format->width = (int)(format->width * 10 + *s++ - '0');
-			if (*s == '*')
-			{
-				format->width = va_arg(var, int);
-				if (format->width < 0)
-				{
-					format->flag = '-';
-					format->width *= -1;
-				}
-				s++;
-			}
-		format->length += format->width;
-		}
-		if (*s++ == '.')
-		{
-			while (ft_isdigit((int)*s))
-				format->precision = (int)(format->precision * 10 + *s++ - '0');
-			if (*s == '*')
-			{
-				format->precision = va_arg(var, int);
-				s++;
-			}
-		}
-		if (ft_istype(*s))
-			format->type = *s++;
-		format->str = ++s;
-		break;
-	}
-	return (s);
-}
-
-void	strinit(t_struct *format, char *str)
+void	str_clear(t_struct *format, char *str)
 {
 	format->flag = 'n';
 	format->width = 0;
@@ -130,43 +26,142 @@ void	strinit(t_struct *format, char *str)
 	format->a = str;
 }
 
-// int		parsestr(char *s, va_list var, t_struct *format)
-int		parsestr(va_list var, t_struct *f)
+int	ft_istype(char c)
 {
-	// size_t i;
-	// char *a;
-	char *s;
-	// t_struct *form;
+	if (c == 'c' || c == 's' || c == 'p' ||
+		c == 'd' || c == 'i' || c == 'u' ||
+		c == 'x' || c == 'X' || c == '%')
+		return (1);
+	else
+		return (0);
+}
 
-	// s = ft_strdup((char *)str);
-	// strinit(format, s);
-	// if (!(form = (t_struct*)ft_calloc(sizeof(t_struct), 1)))
-	// 	return (0);
-	// a = s;
-	// a = f->str;
-	s = f->str;
-
-	if ((f->a = ft_strchr(f->str, '%')))
-		parseformat(f->a, f, var);
-	else 
-		f->a = ft_strchr(f->str, '\0');
-	while (s < f->a)
+void	parse_width(t_struct *f, va_list var)
+{
+	if (ft_isdigit((int)*f->a) || *f->a == '*')
 	{
-		ft_putchar_fd(*s++, 1);
+		f->width = 0;
+		while (ft_isdigit((int)*f->a))
+			f->width = (int)(f->width * 10 + *f->a++ - '0');
+		if (*f->a == '*')
+		{
+			f->width = va_arg(var, int);
+			if (f->width < 0)
+			{
+				f->flag = '-';
+				f->width *= -1;
+			}
+			f->a++;
+		}
+	f->length += f->width;
+	}
+}
+
+void parse_precision(t_struct *f, va_list var)
+{
+	if (*f->a++ == '.')
+	{
+		f->precision = 0;
+		while (ft_isdigit((int)*f->a))
+			f->precision = (int)(f->precision * 10 + *f->a++ - '0');
+		if (*f->a == '*')
+		{
+			f->precision = va_arg(var, int);
+			f->a++;
+		}
+	}
+	// printf("tochnost f->a:%s\n", f->a);
+}
+
+char	*parseformat(t_struct *f, va_list var)
+{
+	f->a++;
+	while (!ft_istype(*f->a++))
+	{
+		while (*f->a == '-' || *f->a == '0')
+			f->flag = *f->a++;
+		parse_width(f, var);
+		parse_precision(f, var);
+		if (ft_istype(*f->a))
+		{
+			// printf("\nbefore save type f->a: %s\n", f->a);
+			f->type = *f->a;
+			f->a++;
+			f->str = f->a;
+			printf("\nafter save type f->str:%s f->a:%s\n", f->str, f->a);
+			break;
+			// f->str = f->a;
+		}
+		else
+		{
+			str_clear(f, f->a);
+			break;
+			// printf("\nbo type f->str: %s f->a: %s\n", f->str, f->a);
+		}
+	}
+	
+	return (f->str);
+}
+
+void	just_print_str(t_struct *f)
+{
+	while (f->str < f->a)
+	{
+		ft_putchar_fd(*f->str, 1);
+		f->str++;
 		f->length++;
 	}
+}
+/* 
+Изменить как-то parsestr 
+Принцип такой: парсер возвращает str = a, если спарсил параметры
+Если параметров нет, он вернет структуру, где a и str на месте %
+Можно в a записывать позицию конца строки, тогда после парсинга можно будет изи вывести
+
+ */
+int		parsestr(va_list var, t_struct *f)
+{
+	while (f->a != '\0')
+	{
+		f->a = ft_strchr(f->str, '%');
+		if (f->a)
+		{
+			just_print_str(f);
+			parseformat(f, var);
+			// va_list print;
+		}
+		else
+		{
+			f->a = ft_strchr(f->str, '\0');
+			just_print_str(f);
+		}
+	}
+
+
+
+	// if ((f->a = ft_strchr(f->str, '%')))
+	// {
+	// 	just_print_str(f);
+	// 	parseformat(f, var);
+	// 	// va_list
+	// 	s = f->str;
+	// }
+	// else 
+	// {
+	// 	f->a = ft_strchr(f->str, '\0');
+	// 	just_print_str(f);
+	// }
+
+	// f->str = s;
+
+
 	// f->str += 1;
 	// format->str = s;
 	// printf("\nformat->str: %s\n", f->str);
-	printf("\ns:%c a:%c |\n", *f->str, *f->a);
-	printf("\e[1m\e[2;32m \nf->str:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\e[0m\n", f->str, f->flag, f->width, f->precision, f->type, f->length);
+	// printf("\ns:%c a:%c |\n", *f->str, *f->a);
+	printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\e[0m\n", f->str, f->a, f->flag, f->width, f->precision, f->type, f->length);
 	// printf("gogogogog\n\n\n\n%s\n%s\n%s\n%s\n", format->str++, format->str++, format->str++, format->str);
-  // }
-  // while (s[i])
-  // {
-  //   if (s[i] == '')
-  //   i++;
-  // }
+
 	return (0);
 }
 
@@ -183,8 +178,10 @@ int		ft_printf(const char *str, ...)
 
 	if (!(format = (t_struct*)malloc(sizeof(t_struct))))
 		return (0);
-	strinit(format, (char*)str);
+	str_clear(format, (char*)str);
 	res = parsestr(var, format);
+
+	
   //Достаём следующий, указывая тип аргумента
   // testsum += va_arg(args, unsigned);
 
