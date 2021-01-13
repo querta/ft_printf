@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:03:41 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/12 20:43:38 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/13 20:35:57 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,38 +73,61 @@ void parse_precision(t_struct *f, va_list var)
 	// printf("tochnost f->a:%s\n", f->a);
 }
 
-char	*parseformat(t_struct *f, va_list var)
+int		parseformat(t_struct *f, va_list var)
 {
-	f->a++;
-	while (!ft_istype(*f->a++))
+	// f->a++;
+	while (!ft_istype(*f->a) && (*f->a != '\0'))
 	{
 		while (*f->a == '-' || *f->a == '0')
 			f->flag = *f->a++;
 		parse_width(f, var);
 		parse_precision(f, var);
-		if (ft_istype(*f->a))
-		{
+		// printf("width:%d precision:%d a:%s\n", f->width, f->precision, f->a);
+		// if (*f->a == '\0')
+		// 	break;
+		// if (ft_istype(*f->a))
+		// 	break;
+		
+	}
+	// if (ft_istype(*f->a))
+	// 	{
 			// printf("\nbefore save type f->a: %s\n", f->a);
-			f->type = *f->a;
-			f->a++;
-			f->str = f->a;
-			printf("\nafter save type f->str:%s f->a:%s\n", f->str, f->a);
-			break;
-			// f->str = f->a;
-		}
-		else
-		{
-			str_clear(f, f->a);
-			break;
-			// printf("\nbo type f->str: %s f->a: %s\n", f->str, f->a);
-		}
+
+	f->type = *f->a;
+	if (ft_istype(f->type))
+	{ 
+		// printf("bbb\n");
+		f->a++;
+		f->str = f->a;
+	}
+	else
+	{
+		return (0);
+		// printf("aaa\n");
+		// f->a = ft_strchr(f->str, '\0');
+		// f->str = f->a;
 	}
 	
-	return (f->str);
+			// printf("\nafter save type f->str:%s f->a:%s\n", f->str, f->a);
+			// break;
+			// f->str = f->a;
+		// }
+		// else
+		// {
+		// 	str_clear(f, f->str);
+		// 	f->a = ft_strchr(f->str, '\0');
+		// 	// break;
+		// 	// printf("\nbo type f->str: %s f->a: %s\n", f->str, f->a);
+		// }
+		// f->a++;
+	// if (ft_istype(*f->a))
+		// printf("1111");
+	return (1);
 }
 
 void	just_print_str(t_struct *f)
 {
+	// 
 	while (f->str < f->a)
 	{
 		ft_putchar_fd(*f->str, 1);
@@ -119,6 +142,13 @@ void	just_print_str(t_struct *f)
 Можно в a записывать позицию конца строки, тогда после парсинга можно будет изи вывести
 
  */
+
+// int		processor_string(va_list var, t_struct *f)
+// {
+	
+// }
+
+
 int		parsestr(va_list var, t_struct *f)
 {
 	while (f->a != '\0')
@@ -127,15 +157,20 @@ int		parsestr(va_list var, t_struct *f)
 		if (f->a)
 		{
 			just_print_str(f);
-			parseformat(f, var);
-			// va_list print;
+			f->a++;
+			if (!parseformat(f, var))
+				just_print_str(f);
+			// just_print_str(f);
+			// process_string(var, f);
 		}
 		else
 		{
 			f->a = ft_strchr(f->str, '\0');
 			just_print_str(f);
+			break;
 		}
 	}
+	// just_print_str(f);
 
 
 
@@ -168,7 +203,7 @@ int		parsestr(va_list var, t_struct *f)
 int		ft_printf(const char *str, ...)
 {
 	va_list var;  // переменный аргумент
-	int res;
+	int length;
 	t_struct *format;
 
 	va_start(var, str);   // инициализирует var после аргумента str
@@ -179,8 +214,8 @@ int		ft_printf(const char *str, ...)
 	if (!(format = (t_struct*)malloc(sizeof(t_struct))))
 		return (0);
 	str_clear(format, (char*)str);
-	res = parsestr(var, format);
-
+	parsestr(var, format);
+	length = format->length;
 	
   //Достаём следующий, указывая тип аргумента
   // testsum += va_arg(args, unsigned);
@@ -201,5 +236,5 @@ int		ft_printf(const char *str, ...)
 
 	va_end(var);
 	
-	return (res);
+	return (length);
 }
