@@ -7,16 +7,12 @@ HEADER = ft_printf.h
 LIBFT_DIR = src/libft/
 SRC_DIR = src/
 
-SRC = ft_printf.c
+SRC = ft_printf.c parser.c utilities.c processor.c
 
-# SRC_BONUS = 
+OBJ =	$(addprefix $(SRC_DIR), $(SRC:.c=.o)) 
 
-OBJ = $(SRC_DIR)$(SRC:.c=.o)
 
-# OBJ_BONUS = $(SRC_BONUS:.c=.o)
-
-.c.o:
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) 
+all:	$(SRC_DIR) $(NAME)
 
 $(NAME):	$(OBJ)
 		make -C $(LIBFT_DIR)
@@ -24,16 +20,13 @@ $(NAME):	$(OBJ)
 		mv $(LIBFT) $(NAME)
 		ar -rc $(NAME) $(OBJ)
 
-all:	$(SRC_DIR) $(NAME)
-
-# bonus:	$(OBJ) $(OBJ_BONUS)
-# 		ar -rc $(NAME) $(OBJ) $(OBJ_BONUS)
+%.o : %.c
+	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) 
 
 clean:
 	make clean -C $(LIBFT_DIR)
 	rm -f $(OBJ) $(OBJ_BONUS)
 
-# make fclean -C src/libft
 fclean: clean
 		rm -f $(LIBFT_DIR)$(LIBFT)
 		rm -f $(NAME)
