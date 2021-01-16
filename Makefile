@@ -2,7 +2,7 @@ NAME = libftprintf.a
 LIBFT = libft.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-HEADER = ft_printf.h
+HEADER = includes
 
 LIBFT_DIR = src/libft/
 SRC_DIR = src/
@@ -11,17 +11,15 @@ SRC = ft_printf.c parser.c utilities.c processor.c
 
 OBJ =	$(addprefix $(SRC_DIR), $(SRC:.c=.o)) 
 
-
 all:	$(SRC_DIR) $(NAME)
 
 $(NAME):	$(OBJ)
 		make -C $(LIBFT_DIR)
-		cp $(LIBFT_DIR)$(LIBFT) .
-		mv $(LIBFT) $(NAME)
+		cp $(LIBFT_DIR)$(LIBFT) ./$(NAME)
 		ar -rc $(NAME) $(OBJ)
 
 %.o : %.c
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) 
+	$(CC) $(FLAGS) -I $(HEADER) -c $< -o $(<:.c=.o) 
 
 clean:
 	make clean -C $(LIBFT_DIR)

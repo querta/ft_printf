@@ -4,7 +4,6 @@
 
 int main ()
 {
-	// printf("%-1.315");
 printf("%d\n", 11111);
 printf("%3d\n", 11111);
 
@@ -22,6 +21,11 @@ printf("\n%10.15d\n", 11111);
 printf("%010.15d\n", 11111);
 printf("%-10.15d\n", 11111);
 printf("%-10.10d\n", 11111);
+
+printf("\n%5.5d\n", 11111);
+
+
+
 
 	return (0);
 }
