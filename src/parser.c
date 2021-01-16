@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:08:40 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/16 11:28:25 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/16 18:50:27 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static	void	parse_width(t_struct *f, va_list var)
 			}
 			f->a++;
 		}
-	// f->length += f->width;
 	}
 }
 
@@ -37,6 +36,7 @@ static	void parse_precision(t_struct *f, va_list var)
 {
 	if (*f->a == '.')
 	{
+		f->dot = 1;
 		f->a++;
 		f->precision = 0;
 		while (ft_isdigit((int)*f->a))

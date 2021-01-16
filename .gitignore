@@ -1,7 +1,8 @@
 .Ds_Store
 *.swp
 .vscode
-a.out
+a.out*
 test.c
 *.o
 *.a
+42TESTERS-PRINTF

@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:03:41 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/16 11:28:51 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/16 15:20:29 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		parsestr(va_list var, t_struct *f)
 			break;
 		}
 	}
-	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\e[0m\n", f->str, f->a, f->flag, f->width, f->precision, f->type, f->length);
+	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ndot:%d\ntype:%c\nlength:%d\e[0m\n", f->str, f->a, f->flag, f->width, f->precision, f->dot, f->type, f->length);
 
 	return (0);
 }
@@ -48,7 +48,7 @@ int		ft_printf(const char *str, ...)
 
 	va_start(var, str);   // инициализирует var после аргумента str
 	str_clear(&format, (char*)str);
-	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\nargstart:%s\nargend:%s\e[0m\n", format.str, format.a, format.flag, format.width, format.precision, format.type, format.length, format.argstart, format.argend);
+	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\nargstart:%s\nargend:%s\e[0m\n", format.str, format.a, format.flag, format.width, format.precision, format.type, format.length, format.arg, format.argend);
 	parsestr(var, &format);
 	length = format.length;
 	va_end(var);

@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:06:49 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/16 14:04:50 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/16 18:50:09 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ typedef struct		s_struct
 	int		precision;
 	char	type;
 	int		length;
+	int		dot;
 	char	*str;
 	char	*a;
-	char	*argstart;
-	char	*argend;
+	char	*arg;
 }					t_struct;
 
 // typedef	struct		s_param
@@ -43,6 +43,7 @@ void		str_clear(t_struct *format, char *str);
 int			ft_istype(char c);
 int			process_string(va_list var, t_struct *f);
 void		just_print_str(t_struct *f);
+int			process_ints(va_list var, t_struct *f);
 int			ft_printf(const char *str, ...);
 
 #endif
