@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:08:40 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/15 13:36:25 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/16 11:28:25 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static	void	parse_width(t_struct *f, va_list var)
 
 static	void parse_precision(t_struct *f, va_list var)
 {
-	if (*f->a++ == '.')
+	if (*f->a == '.')
 	{
+		f->a++;
 		f->precision = 0;
 		while (ft_isdigit((int)*f->a))
 			f->precision = (int)(f->precision * 10 + *f->a++ - '0');
