@@ -7,7 +7,7 @@ HEADER = includes
 LIBFT_DIR = src/libft/
 SRC_DIR = src/
 
-SRC = ft_printf.c parser.c utilities.c processor.c process_ints.c
+SRC = ft_printf.c parser.c utilities.c processor.c process_ints.c process_char.c 
 
 OBJ =	$(addprefix $(SRC_DIR), $(SRC:.c=.o)) 
 

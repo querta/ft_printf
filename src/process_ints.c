@@ -6,16 +6,11 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 18:49:17 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/16 21:06:39 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/17 18:03:18 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h> // printf
-
-
-// Если dot = 1 и precision = 0, то при n = 0 выводим только пробел  */
-
 
 static	int		make_width(t_struct *f)
 {
@@ -24,8 +19,7 @@ static	int		make_width(t_struct *f)
 	int len;
 
 	newstr = 0;
-	len = ft_strlen(f->arg);
-	// printf("\nlen:%d\n", len);
+	len = (int)ft_strlen(f->arg);
 	if (f->width > len)
 	{
 		if (!(newstr = ft_calloc((f->width - len + 1), sizeof(char))))
@@ -52,12 +46,13 @@ static	int		make_precision(t_struct *f)
 	int	len;
 
 	newstr = 0;
-	len = ft_strlen(f->arg);
+	len = (int)ft_strlen(f->arg);
 	if (f->precision > len)
 	{
 		if (!(newstr = ft_calloc((f->precision - len + 1), sizeof(char))))
 			return (0);
-		ft_memset(newstr, '0', f->precision - len);
+		if ((f->type != 'c'))
+			ft_memset(newstr, '0', f->precision - len);
 		tmp = ft_strjoin(newstr, f->arg);
 		free(f->arg);
 		free(newstr);
@@ -66,21 +61,34 @@ static	int		make_precision(t_struct *f)
 	return (0);
 }
 
+int make_arg(va_list var, t_struct *f)
+{
+	int arg;
+
+	arg = va_arg(var, int);
+	if (f->dot && !f->precision && arg == 0)
+	{
+		if (!(f->arg = (char *)ft_calloc(2, sizeof(char))))
+			return (-1);
+		*f->arg = arg;
+	}
+	else
+	{
+		if (!(f->arg = ft_itoa(arg)))
+			return (-1);
+	}
+	return (arg);
+}
+
 int		process_ints(va_list var, t_struct *f)
 {
-	int		arg;
-	int		zero;
+	int	len;
+	int	arg;
 
-	zero = 0;
-	arg = 0;
-	arg = va_arg(var, int);
-	if (!(f->arg = ft_itoa(arg)))
-		return (0);
+	arg = make_arg(var, f);
 	make_precision(f);
 	make_width(f);
-	if (f->type == 'c')
-		f->length++;
-	else
-		f->length = ft_strlen(f->arg);
-	return (f->length);
+	len = (int)ft_strlen(f->arg);
+	f->length += len;
+	return (len);
 }

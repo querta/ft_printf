@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:03:41 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/16 15:20:29 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/17 18:07:38 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		parsestr(va_list var, t_struct *f)
 			just_print_str(f);
 			break;
 		}
+	str_clear(f, f->str);
 	}
 	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ndot:%d\ntype:%c\nlength:%d\e[0m\n", f->str, f->a, f->flag, f->width, f->precision, f->dot, f->type, f->length);
 

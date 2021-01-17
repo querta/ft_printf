@@ -6,3 +6,4 @@ test.c
 *.o
 *.a
 42TESTERS-PRINTF
+pft/

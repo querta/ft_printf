@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:08:40 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/16 18:50:27 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/17 15:57:01 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ int		parseformat(t_struct *f, va_list var)
 	while (!ft_istype(*f->a) && (*f->a != '\0'))
 	{
 		while (*f->a == '-' || *f->a == '0')
+		{
+			if (f->flag == '-')
+				break;
 			f->flag = *f->a++;
+		}
 		parse_width(f, var);
 		parse_precision(f, var);		
 	}
