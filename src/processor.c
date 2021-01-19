@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:54:10 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/17 18:04:08 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/19 02:30:05 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int		process_string(va_list var, t_struct *f)
 	len = 0;
 	if (f->type == 'd' || f->type == 'i')
 		len = process_ints(var, f);
-	// if (f->type == 'c' || f->type == '%')
-	// 	len = process_char(var, f);
+	if (f->type == 'c' || f->type == '%')
+		len = process_char(var, f);
 
-	while (i <= len)
-		ft_putchar_fd(f->arg[i++], 1);
-
-	free(f->arg);
+	// while (i <= len)
+	// 	ft_putchar_fd(f->arg[i++], 1);
+	if (f->arg)
+		free(f->arg);
 	return (1);
 }

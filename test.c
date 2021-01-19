@@ -46,8 +46,30 @@ int main ()
 
 	// printf("08 orig length =%d\n", printf("%08d\n", 11111));
 	// printf("my length =%d\n\n", ft_printf("%08d\n", 11111));
-	// printf("%08d\n", 11111);
+	// printf("go%08d\n", 11111);
+	// ft_printf("go%08d\n", 11111);
+	// ft_printf("this %d number\n", 0);
+	// ft_printf("%.d", 0);  // ret = 0
+	// ft_printf("%5.0d\n", 0);  // "     "
+	// printf("a%3d|\n", 0);  //
+	// ft_printf("a%3d|\n", 0);  //
+	// printf("a%3.0d|\n", 0);  //
+	// ft_printf("a%3.0d|\n", 0);  //
 	// ft_printf("%08d\n", 11111);
+	printf("%7d\n", -54);
+	ft_printf("%7d\n", -54);
+	printf("%07d\n", -54);
+	ft_printf("%07d\n", -54);
+	printf("%.22d\n", -3);
+	ft_printf("%.22d\n", -3);
+
+	printf("\n");
+	printf("%05d\n", 43);
+	ft_printf("%05d\n", 43);
+	printf("aaa%08d\n", 34);
+	ft_printf("aaa%08d\n", 34);
+	printf("ddd%08.5d\n", 34);
+	ft_printf("ddd%08.5d\n", 34);
 
 	// printf("-8 orig length =%d\n", printf("%-8d\n", 11111));
 	// printf("my length =%d\n\n", ft_printf("%-8d\n", 11111));
@@ -58,8 +80,8 @@ int main ()
 	// printf("orig length =%d\n", printf("aaa%8.10d\n", 0));
 	// printf("my length =%d\n\n", ft_printf("aaa%8.10d\n", 0));
 
-	// printf("orig length =%d\n", printf("aaa%3d\n", 0));
-	// printf("my length =%d\n\n", ft_printf("aaa%3d\n", 0));
+	printf("orig length =%d\n", printf("aaa%3d\n", 0));
+	printf("my length =%d\n\n", ft_printf("aaa%3d\n", 0));
 
 	// printf("1orig length =%d\n", printf("aaa%-1d\n", 1));
 	// printf("my length =%d\n\n", ft_printf("aaa%-1d\n", 1));
@@ -72,41 +94,41 @@ int main ()
 	
 	// ft_printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", 8, -12, 123456789, 0, -12345678, 'a', -2147483648, 2147483647); //T26
 
-	// int		i = 8;
-	// int		j = -12;
-	// int		k = 123456789;
-	// int		l = 0;
-	// int		m = -12345678;
-	// char	c = 'a';
-	// int		d = 2147483647;
-	// int		e = -2147483648;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
 
 	// printf("%-1i\n", d); //T26
 	// ft_printf("%-1i, %-1d\n", i, i); //T26
 				
-// printf("--=== 42TEST ===--\n");
+printf("--=== 42TEST ===--\n");
 	ft_printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
-	//    printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
-// 	ft_printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
-// 	   printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
-// 	ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
-// 	   printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
-// 	ft_printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
-// 	   printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
-// 	ft_printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
-// 	   printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
-// 	ft_printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
-// 	   printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
-// 	ft_printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
-// 	   printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
-// 	ft_printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
-// 	   printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
-// 	ft_printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
-// 	   printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
-// 	ft_printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
-// 	   printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
+	   printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
+	ft_printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
+	   printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
+	ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+	   printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+	ft_printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
+	   printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
+	ft_printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
+	   printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
+	ft_printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
+	   printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
+	ft_printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
+	   printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
+	ft_printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
+	   printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
+	ft_printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
+	   printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
+	ft_printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
+	   printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
 
-	// // printf("\n---=== с - тип===---\n");
+	// printf("\n---=== с - тип===---\n");
 	// char typec = '\0';
 	// printf("orig length =%d\n", printf("111d%cd\n", typec));
 	// printf("my length =%d\n\n", ft_printf("111d%cd\n", typec));
@@ -142,7 +164,7 @@ int main ()
 	// printf("my length =%d\n\n", ft_printf("a%-5.cd\n", typec));
 
 	// printf("\n---=== процентики ===---\n");
-	// ft_printf("%%");
+	// ft_printf("%%\n");
 	// printf("orig length =%d\n", printf("a%%d\n"));
 	// printf("my length =%d\n\n", ft_printf("a%%d\n"));
 	// printf("orig length =%d\n", printf("a%010%d\n"));
