@@ -6,6 +6,6 @@ test.c
 *.o
 *.a
 42TESTERS-PRINTF
-pft/
-pft_2019/
-newt/
+# pft/
+# pft_2019/
+# newt/
