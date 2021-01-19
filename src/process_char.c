@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:33:38 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 04:56:13 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/19 05:13:16 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ int		process_char(va_list var, t_struct *f)
 		ft_putchar_fd(c, 1);
 		f->length++;
 	}
-	return (0);
+	return (f->width);
 }

@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 18:49:17 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 04:51:03 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/19 08:40:42 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static	int		make_precision(t_struct *f)
 	if (f->precision > len)
 	{
 		if (*str == '-')
-			f->precision++;
+			len += 10;
+			// f->precision++;
 		if (!(newstr = ft_calloc((f->precision - len + 1), sizeof(char))))
 			return (-1);
 		str = makestr(&newstr, f->precision - len, f);

@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:03:41 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 01:34:53 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/19 06:03:56 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <string.h>
 
-int		parsestr(va_list var, t_struct *f)
+static	int		parsestr(va_list var, t_struct *f)
 {
 	while (f->a != '\0')
 	{
@@ -26,7 +26,7 @@ int		parsestr(va_list var, t_struct *f)
 			f->a++;
 			if (!parseformat(f, var))
 				just_print_str(f);
-			process_string(var, f);
+			processor(var, f);
 		}
 		else
 		{
@@ -50,7 +50,7 @@ int		ft_printf(const char *str, ...)
 	va_start(var, str);   // инициализирует var после аргумента str
 	str_clear(&format, (char*)str);
 	format.length = 0;
-	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\nargstart:%s\nargend:%s\e[0m\n", format.str, format.a, format.flag, format.width, format.precision, format.type, format.length, format.arg, format.argend);
+	// printf("\e[1m\e[2;32m \nf->str:%s\nf->a:%s\nflag:%c\nwidth:%d\nprecision:%d\ntype:%c\nlength:%d\narg:%s\n\e[0m\n", format.str, format.a, format.flag, format.width, format.precision, format.type, format.length, format.arg);
 	parsestr(var, &format);
 	length = format.length;
 	va_end(var);

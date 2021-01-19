@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:54:10 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 02:30:05 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/19 06:00:20 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // Точность - минимальная. Если точномть больше знакчения, то добавиет нулями слева
 
 
-int		process_string(va_list var, t_struct *f)
+int		processor(va_list var, t_struct *f)
 {
 	int i;
 	int len;
@@ -28,6 +28,8 @@ int		process_string(va_list var, t_struct *f)
 		len = process_ints(var, f);
 	if (f->type == 'c' || f->type == '%')
 		len = process_char(var, f);
+	if (f->type == 's')
+		len = process_string(var, f);
 
 	// while (i <= len)
 	// 	ft_putchar_fd(f->arg[i++], 1);
