@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 18:49:17 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 18:46:11 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 20:56:52 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static	char	*makestr(char **newstr, int len, t_struct *f)
 {
 	char *str;
-	
+
 	str = f->arg;
 	ft_memset(*newstr, '0', len);
 	return (str);
@@ -23,10 +23,10 @@ static	char	*makestr(char **newstr, int len, t_struct *f)
 
 static	int		make_width(t_struct *f)
 {
-	char *newstr;
-	char *tmp;
-	int len;
-	char *str;
+	char	*newstr;
+	char	*tmp;
+	int		len;
+	char	*str;
 
 	str = f->arg;
 	len = (int)ft_strlen(f->arg);
@@ -34,13 +34,13 @@ static	int		make_width(t_struct *f)
 	{
 		if (!(newstr = ft_calloc((f->width - len + 1), sizeof(char))))
 			return (-1);
-		if ((f->flag == '0') && (f->dot == 0 || f->precision < 0)) // && (f->dot == 0)
+		if ((f->flag == '0') && (f->dot == 0 || f->precision < 0))
 			str = makestr(&newstr, f->width - len, f);
 		else
 			ft_memset(newstr, ' ', f->width - len);
 		if (f->flag == '-')
 			tmp = ft_strjoin(str, newstr);
-		else 
+		else
 			tmp = ft_strjoin(newstr, str);
 		free(f->arg);
 		free(newstr);
@@ -51,10 +51,10 @@ static	int		make_width(t_struct *f)
 
 static	int		make_precision(t_struct *f)
 {
-	char *newstr;
-	char *tmp;
-	int	len;
-	char *str;
+	char	*newstr;
+	char	*tmp;
+	int		len;
+	char	*str;
 
 	newstr = 0;
 	str = f->arg;
@@ -80,7 +80,6 @@ static	int		make_arg(va_list var, t_struct *f)
 	size_t arg;
 
 	arg = (size_t)va_arg(var, void*);
-	
 	if (f->dot == 1 && f->precision == 0 && arg == 0)
 	{
 		if (!(f->arg = (char *)ft_calloc(2, sizeof(char))))
@@ -97,27 +96,17 @@ static	int		make_arg(va_list var, t_struct *f)
 
 int				process_pointers(va_list var, t_struct *f)
 {
-	int	len;
+	int		len;
 	size_t	arg;
-	int	i;
-	// char *tmp;
+	int		i;
 
 	i = 0;
 	arg = make_arg(var, f);
 	make_precision(f);
-	// if (arg == 0 || (f->precision < (int)ft_strlen(f->arg) && f->width == 0))
-	// 	tmp = ft_strjoin("0x", f->arg);
-	// else
-	// 	tmp = ft_strjoin("0x10", f->arg);
-	// free(f->arg);
-	// f->arg = tmp;
 	make_width(f);
 	len = (int)ft_strlen(f->arg);
 	f->length += len;
-
 	while (i < len)
-	{
 		ft_putchar_fd(f->arg[i++], 1);
-	}
 	return (len);
 }

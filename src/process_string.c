@@ -6,18 +6,17 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 04:58:35 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 15:31:18 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 20:58:42 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static	int		make_width(t_struct *f)
 {
-	int len;
-	char *newstr;
-	char *tmp;
+	int		len;
+	char	*newstr;
+	char	*tmp;
 
 	len = 0;
 	len = ft_strlen(f->arg);
@@ -29,10 +28,9 @@ static	int		make_width(t_struct *f)
 			ft_memset(newstr, '0', f->width - len);
 		else
 			ft_memset(newstr, ' ', f->width - len);
-		
 		if (f->flag == '-')
 			tmp = ft_strjoin(f->arg, newstr);
-		else 
+		else
 			tmp = ft_strjoin(newstr, f->arg);
 		free(f->arg);
 		free(newstr);
@@ -43,10 +41,10 @@ static	int		make_width(t_struct *f)
 
 static	int		make_precision(t_struct *f)
 {
-	int len;
-	len = 0;
-	char *tmp;
+	int		len;
+	char	*tmp;
 
+	len = 0;
 	len = ft_strlen(f->arg);
 	if (f->precision < len && f->dot == 1)
 	{
@@ -54,17 +52,15 @@ static	int		make_precision(t_struct *f)
 		free(f->arg);
 		f->arg = tmp;
 	}
-	
 	return (0);
 }
 
 int				process_string(va_list var, t_struct *f)
 {
-	int len;
-	char *str;
-	len = 0;
+	int		len;
+	char	*str;
 
-	(void)f;
+	len = 0;
 	str = va_arg(var, char*);
 	if (!str)
 		f->arg = ft_strdup("(null)");

@@ -2,7 +2,7 @@ NAME = libftprintf.a
 LIBFT = libft.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-HEADER = includes
+HEADER = ./includes/
 
 LIBFT_DIR = src/libft/
 SRC_DIR = src/

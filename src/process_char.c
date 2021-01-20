@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:33:38 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 15:29:56 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 20:30:51 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int				process_char(va_list var, t_struct *f)
 {
 	char c;
 
-	c = (char)va_arg(var, int);
 	if (f->type == '%')
-		c = 37;
+		c = '%';
+	else
+		c = (char)va_arg(var, int);
 	if (f->width > 1)
 	{
 		if (!(f->arg = (char *)ft_calloc(f->width, sizeof(char))))

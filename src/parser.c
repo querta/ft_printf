@@ -6,11 +6,12 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:08:40 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 15:25:50 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 20:27:12 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static	void	parse_width(t_struct *f, va_list var)
 {
