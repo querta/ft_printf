@@ -6,8 +6,13 @@
 int main ()
 {
 
-	printf("%-2.3d\n", -12);
-	ft_printf("%-2.3d\n", -12);
+	// printf("%-2.3d\n", -12);
+	// ft_printf("%-2.3d\n", -12);
+
+
+	// printf("%-2.5d\n", -12);
+	// ft_printf("%-2.5d\n", -12);
+
 // 	printf("%d", ft_printf("%c", 'a'));
 
 // 	char *s = "sss";
@@ -51,7 +56,7 @@ int main ()
 
 // 	printf("08 orig length =%d\n", printf("%08d\n", 11111));
 // 	printf("my length =%d\n\n", ft_printf("%08d\n", 11111));
-// 	printf("go%08d\n", 11111);
+// // 	printf("go%08d\n", 11111);
 // 	ft_printf("go%08d\n", 11111);
 // 	ft_printf("this %d number\n", 0);
 // 	ft_printf("%.d", 0);  // ret = 0
@@ -98,6 +103,7 @@ int main ()
 	
 // 	ft_printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", 8, -12, 123456789, 0, -12345678, 'a', -2147483648, 2147483647); //T26
 
+
 // 	int		i = 8;
 // 	int		j = -12;
 // 	int		k = 123456789;
@@ -111,35 +117,72 @@ int main ()
 // 	ft_printf("%-1i, %-1d\n", i, i); //T26
 				
 // printf("--=== 42TEST ===--\n");
-// 	ft_printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
-// 	   printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
-// 	ft_printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
-// 	   printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
-// 	ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
-// 	   printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
-// 	ft_printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
-// 	   printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
-// 	ft_printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
-// 	   printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
-// 	ft_printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
-// 	   printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
-// 	ft_printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
-// 	   printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
-// 	ft_printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
-// 	   printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
-// 	ft_printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
-// 	   printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
-// 	ft_printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
-// 	   printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
+// 	// ft_printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
+// 	//    printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", i, j, k, l, m, c, e, d); //T26
+// 	// ft_printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
+// 	//    printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
+// 	// ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+// 	//    printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+// 	// ft_printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
+// 	//    printf("%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d\n", i, j, k, l, m, c, e, d); //T5
+// 	// ft_printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
+// 	//    printf("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d\n", i, j, k, l, m, c, e, d); //T6
+// 	// ft_printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
+// 	//    printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d\n", i, j, k, l, m, c, e, d); //T7
+// 	// ft_printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
+// 	//    printf("%5i, %5d, %5d, %5d, %5d, %5d, %5d, %5d\n", i, j, k, l, m, c, e, d); //T8
+// 	// ft_printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
+// 	//    printf("%6i, %6d, %6d, %6d, %6d, %6d, %6d, %6d\n", i, j, k, l, m, c, e, d); //T9
+// 	// ft_printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
+// 	//    printf("%7i, %7d, %7d, %7d, %7d, %7d, %7d, %7d\n", i, j, k, l, m, c, e, d); //T10
+// 	// ft_printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
+// 	//    printf("%8i, %8d, %8d, %8d, %8d, %8d, %8d, %8d\n", i, j, k, l, m, c, e, d); //T11
+
+// 	// ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", 2, -2, 2, -2, 2, -2, 2, -2, 2, -2, 2, -2, 2, -2); 
+// 	// printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", 2, -2, 2, -2, 2, -2, 2, -2, 2, -2, 2, -2, 2, -2); 
+
+// 	int		b = 0;
+
+// 	int	a = -2;
+// 	while(a < 5) //T70-177
+// 	{
+// 		b = -2;
+// 		while (b < 5)
+// 		{
+// 			printf("a=%d, b=%d\n", a, b);
+// 			printf(" --- Return : %d\n", printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+// 			printf(" --- Return : %d\n\n", ft_printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+
+// 			printf(" --- Return : %d\n", printf("%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+// 			printf(" --- Return : %d\n\n", ft_printf("%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+
+// 			printf(" --- Return : %d\n", printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+// 			printf(" --- Return : %d\n\n", ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+// 			b++;
+// 		}
+// 		a++;
+// 	}
+
+// printf("%0*.*i, %0*.*d\n", 20, -10, 8, 2, -2, 0);
+// ft_printf("%0*.*i, %0*.*d\n", 20, -10, 8, 2, -2, 0);
+// printf("%+s", NULL);
+// ft_printf("%+s", NULL);
+ft_printf("%+s", "aa");
+// ft_printf("aaa%-7daaa", 33);
+
+// 1c1
+// <  8, -12, 123456789,  0, -12345678, 97, -2147483648, 2147483647 --- Return : 62
+// ---
+// > 08, -12, 123456789, 00, -12345678, 97, -2147483648, 2147483647 --- Return : 62
 
 // 	printf("\n---=== с - тип===---\n");
-// 	char typec = '\0';
-// 	printf("orig length =%d\n", printf("111d%cd\n", typec));
-// 	printf("my length =%d\n\n", ft_printf("111d%cd\n", typec));
-// 	printf("orig length =%d\n", printf("a%-2cd\n", typec));
-// 	printf("my length =%d\n\n", ft_printf("a%-2cd\n", typec));
-// 	printf("orig length =%d\n", printf("a%-2.cd\n", typec));
-// 	printf("my length =%d\n\n", ft_printf("a%-2.cd\n", typec));
+	// char typec = 'a';
+	// printf("orig length =%d\n", printf("111d%cd\n", typec));
+	// printf("my length =%d\n\n", ft_printf("111d%cd\n", typec));
+	// printf("orig length =%d\n", printf("a%-2cd\n", typec));
+	// printf("my length =%d\n\n", ft_printf("a%-2cd\n", typec));
+	// printf("orig length =%d\n", printf("a%-2.cd\n", typec));
+	// printf("my length =%d\n\n", ft_printf("a%-2.cd\n", typec));
 
 
 // 	// printf("d%cd\n", typec);
@@ -232,6 +275,8 @@ int main ()
 	// ft_printf("%5.d|\n", 0);
 	// printf("%-5c|\n", '\0');
 	// ft_printf("%-5c|\n", '\0');
+	// printf("%08.5d\n", 34);
+	// ft_printf("%08.5d\n", 34);
 
 
 	// while (1){};

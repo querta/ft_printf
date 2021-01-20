@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 04:58:35 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 08:16:22 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 15:31:18 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static	int		make_precision(t_struct *f)
 	return (0);
 }
 
-int	process_string(va_list var, t_struct *f)
+int				process_string(va_list var, t_struct *f)
 {
 	int len;
 	char *str;
@@ -75,17 +75,5 @@ int	process_string(va_list var, t_struct *f)
 	make_width(f);
 	ft_putstr_fd(f->arg, 1);
 	f->length += ft_strlen(f->arg);
-
-	// printf("\n=== f->arg=%s\n", f->arg);
-	// if (f->precision > len)
-	// {
-	// 	if (f->flag == '-')
-	// 	{
-			
-	// 	}
-	// }
-	
-	// printf("\nstr:%s f-arg:%s\n", str, f->arg);
-
 	return (len);
 }

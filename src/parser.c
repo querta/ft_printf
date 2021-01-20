@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:08:40 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 08:26:26 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 15:25:50 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static	void	parse_width(t_struct *f, va_list var)
 	}
 }
 
-static	void parse_precision(t_struct *f, va_list var)
+static	void	parse_precision(t_struct *f, va_list var)
 {
 	if (*f->a == '.')
 	{
@@ -49,7 +49,7 @@ static	void parse_precision(t_struct *f, va_list var)
 	}
 }
 
-int		parseformat(t_struct *f, va_list var)
+int				parseformat(t_struct *f, va_list var)
 {
 	while (!ft_istype(*f->a) && (*f->a != '\0'))
 	{
@@ -58,18 +58,20 @@ int		parseformat(t_struct *f, va_list var)
 			if (f->flag == '-')
 			{
 				f->a++;
-				break;
+				break ;
 			}
-			f->flag = *f->a++;
+			if (*f->a == '-' || *f->a == '0')
+				f->flag = *f->a++;
 		}
 		parse_width(f, var);
-		parse_precision(f, var);		
+		parse_precision(f, var);
+		if (!ft_istype(*f->a))
+			f->a++;
 	}
-	f->type = *f->a;
-	if (ft_istype(f->type))
-	{ 
-		f->a++;
-		f->str = f->a;
+	if (ft_istype(*f->a))
+	{
+		f->type = *f->a;
+		f->str = ++f->a;
 	}
 	else
 		return (0);

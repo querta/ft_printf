@@ -6,13 +6,13 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 18:49:17 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 08:40:42 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 15:30:45 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	char  *makestr(char **newstr, int len, t_struct *f)
+static	char	*makestr(char **newstr, int len, t_struct *f)
 {
 	char *str;
 	char *tmp;
@@ -42,7 +42,7 @@ static	int		make_width(t_struct *f)
 	{
 		if (!(newstr = ft_calloc((f->width - len + 1), sizeof(char))))
 			return (-1);
-		if ((f->flag == '0') && (f->dot == 0))
+		if ((f->flag == '0') && (f->dot == 0 || f->precision < 0)) // && (f->dot == 0)
 			str = makestr(&newstr, f->width - len, f);
 		else
 			ft_memset(newstr, ' ', f->width - len);
@@ -67,11 +67,10 @@ static	int		make_precision(t_struct *f)
 	newstr = 0;
 	str = f->arg;
 	len = (int)ft_strlen(f->arg);
-	if (f->precision > len)
+	if (f->precision >= len)
 	{
 		if (*str == '-')
-			len += 10;
-			// f->precision++;
+			len--;
 		if (!(newstr = ft_calloc((f->precision - len + 1), sizeof(char))))
 			return (-1);
 		str = makestr(&newstr, f->precision - len, f);
@@ -83,7 +82,7 @@ static	int		make_precision(t_struct *f)
 	return (0);
 }
 
-int make_arg(va_list var, t_struct *f)
+static	int		make_arg(va_list var, t_struct *f)
 {
 	int arg;
 
@@ -103,7 +102,7 @@ int make_arg(va_list var, t_struct *f)
 	return (arg);
 }
 
-int		process_ints(va_list var, t_struct *f)
+int				process_ints(va_list var, t_struct *f)
 {
 	int	len;
 	int	arg;

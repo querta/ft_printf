@@ -6,16 +6,11 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:54:10 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/19 06:00:20 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 15:31:43 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h> // printf
-
-// Ширина - максимальная длина строки, если мы выводим меньше ширины, то добавляются пробелы или нули слева
-// Точность - минимальная. Если точномть больше знакчения, то добавиет нулями слева
-
 
 int		processor(va_list var, t_struct *f)
 {
@@ -31,8 +26,6 @@ int		processor(va_list var, t_struct *f)
 	if (f->type == 's')
 		len = process_string(var, f);
 
-	// while (i <= len)
-	// 	ft_putchar_fd(f->arg[i++], 1);
 	if (f->arg)
 		free(f->arg);
 	return (1);
