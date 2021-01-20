@@ -104,14 +104,35 @@ int main ()
 // 	ft_printf("%-1i, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d, %-1d\n", 8, -12, 123456789, 0, -12345678, 'a', -2147483648, 2147483647); //T26
 
 
-// 	int		i = 8;
-// 	int		j = -12;
-// 	int		k = 123456789;
-// 	int		l = 0;
-// 	int		m = -12345678;
-// 	char	c = 'a';
-// 	int		d = 2147483647;
-// 	int		e = -2147483648;
+	int		i = 8;
+	// int		j = -12;
+	// int		k = 123456789;
+	// int		l = 0;
+	// int		m = -12345678;
+	// char	c = 'a';
+	// int		d = 2147483647;
+	// int		e = -2147483648;
+
+	char	*r = "%%";
+	int		h = 4200;
+	char	*p = "-12";
+	// int a = 12;
+	// int b = 18;
+	// printf("%%%dbada%s%%**%s**-d%%0*d%-12s0*@\n", h, "bada", r, p, r, r, i, r, i, r, i); // 1st '*' = 12, 2nd '*' = 18
+	// ft_printf("%%%dbada%s%%**%s**-d%%0*d%-12s0*@\n", h, "bada", r, p, r, r, i, r, i, r, i); // 1st '*' = 12, 2nd '*' = 18
+	printf("%%%dbada\n", h); // 1st '*' = 12, 2nd '*' = 18
+	ft_printf("%sa%dbada\n", "lal", h); // 1st '*' = 12, 2nd '*' = 18
+/* 
+%4200badabada%**%%**-d%0*d-12         0*@%
+%4200badabada%**%%**-d%0*d-12 
+
+%81686399bada%%%**%%**-d%0*d
+%100793408bada%%%**%%**-d%0*d
+*/
+
+
+// printf("%-00000-----*i\n", 12, 0);
+// ft_printf("%-00000-----*i\n", 12, 0);
 
 // 	printf("%-1i\n", d); //T26
 // 	ft_printf("%-1i, %-1d\n", i, i); //T26
@@ -163,11 +184,13 @@ int main ()
 // 		a++;
 // 	}
 
+
+
 // printf("%0*.*i, %0*.*d\n", 20, -10, 8, 2, -2, 0);
 // ft_printf("%0*.*i, %0*.*d\n", 20, -10, 8, 2, -2, 0);
 // printf("%+s", NULL);
 // ft_printf("%+s", NULL);
-ft_printf("%+s", "aa");
+// ft_printf("%+s", "aa");
 // ft_printf("aaa%-7daaa", 33);
 
 // 1c1

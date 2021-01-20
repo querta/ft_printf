@@ -35,6 +35,8 @@ SRC = ft_memset.c \
 	ft_putnbr_fd.c \
 	ft_strmapi.c \
 	ft_itoa.c \
+	ft_itoa_base.c \
+	ft_itoa_unsigned.c \
 	ft_split.c
 
 SRC_BONUS = ft_lstnew.c \

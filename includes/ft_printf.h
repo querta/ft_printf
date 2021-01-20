@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:06:49 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 15:33:04 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 17:35:41 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int				ft_istype(char c);
 int				processor(va_list var, t_struct *f);
 void			just_print_str(t_struct *f);
 int				process_ints(va_list var, t_struct *f);
+int				process_unints(va_list var, t_struct *f);
+int				process_hexes(va_list var, t_struct *f);
+int				process_pointers(va_list var, t_struct *f);
 int				process_char(va_list var, t_struct *f);
 int				process_string(va_list var, t_struct *f);
 int				ft_printf(const char *str, ...);

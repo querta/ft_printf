@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_ints.c                                     :+:      :+:    :+:   */
+/*   process_pointers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 18:49:17 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 16:06:56 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 18:46:11 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,9 @@
 static	char	*makestr(char **newstr, int len, t_struct *f)
 {
 	char *str;
-	char *tmp;
 	
 	str = f->arg;
 	ft_memset(*newstr, '0', len);
-	if (*str == '-')
-	{
-		tmp = ft_strjoin("-", *newstr);
-		free (*newstr);
-		*newstr = tmp;
-		str++;
-	}
 	return (str);
 }
 
@@ -69,8 +61,6 @@ static	int		make_precision(t_struct *f)
 	len = (int)ft_strlen(f->arg);
 	if (f->precision >= len)
 	{
-		if (*str == '-')
-			len--;
 		if (!(newstr = ft_calloc((f->precision - len + 1), sizeof(char))))
 			return (-1);
 		str = makestr(&newstr, f->precision - len, f);
@@ -79,14 +69,17 @@ static	int		make_precision(t_struct *f)
 		free(newstr);
 		f->arg = tmp;
 	}
+	tmp = ft_strjoin("0x", f->arg);
+	free(f->arg);
+	f->arg = tmp;
 	return (0);
 }
 
 static	int		make_arg(va_list var, t_struct *f)
 {
-	int arg;
+	size_t arg;
 
-	arg = va_arg(var, int);
+	arg = (size_t)va_arg(var, void*);
 	
 	if (f->dot == 1 && f->precision == 0 && arg == 0)
 	{
@@ -96,26 +89,35 @@ static	int		make_arg(va_list var, t_struct *f)
 	}
 	else
 	{
-		if (!(f->arg = ft_itoa(arg)))
+		if (!(f->arg = ft_itoa_base(arg, 16)))
 			return (-1);
 	}
 	return (arg);
 }
 
-int				process_ints(va_list var, t_struct *f)
+int				process_pointers(va_list var, t_struct *f)
 {
 	int	len;
-	int	arg;
-	int i;
+	size_t	arg;
+	int	i;
+	// char *tmp;
 
 	i = 0;
 	arg = make_arg(var, f);
 	make_precision(f);
+	// if (arg == 0 || (f->precision < (int)ft_strlen(f->arg) && f->width == 0))
+	// 	tmp = ft_strjoin("0x", f->arg);
+	// else
+	// 	tmp = ft_strjoin("0x10", f->arg);
+	// free(f->arg);
+	// f->arg = tmp;
 	make_width(f);
 	len = (int)ft_strlen(f->arg);
 	f->length += len;
 
 	while (i < len)
+	{
 		ft_putchar_fd(f->arg[i++], 1);
+	}
 	return (len);
 }

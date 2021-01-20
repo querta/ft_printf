@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:54:10 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 15:31:43 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 17:35:49 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int		processor(va_list var, t_struct *f)
 		len = process_char(var, f);
 	if (f->type == 's')
 		len = process_string(var, f);
+	if (f->type == 'u')
+		len = process_unints(var, f);
+	if (f->type == 'p')
+		len = process_pointers(var, f);
+	if (f->type == 'x' || f->type == 'X')
+		len = process_hexes(var, f);
 
 	if (f->arg)
 		free(f->arg);

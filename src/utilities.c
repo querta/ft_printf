@@ -6,7 +6,7 @@
 /*   By: mmonte <mmonte@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:48:46 by mmonte            #+#    #+#             */
-/*   Updated: 2021/01/20 15:31:55 by mmonte           ###   ########.fr       */
+/*   Updated: 2021/01/20 15:37:40 by mmonte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	str_clear(t_struct *format, char *str)
 	format->precision = 0; 
 	format->type = '0';
 	format->dot = 0;
-	// format->length = 0;
 	format->arg = NULL;
-	// ft_bzero(format, sizeof(*format));
 	format->str = str;
 	format->a = str;
 }
